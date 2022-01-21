@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+         db:
+            image: influxdb:1.7-alpine
+            environment:
+                DOCKER_INFLUXDB_INIT_USERNAME: root
+                DOCKER_INFLUXDB_INIT_PASSWORD: 123
+                DOCKER_INFLUXDB_INIT_BUCKET: test
+                DOCKER_INFLUXDB_INIT_ORG: my-org
+            ports:
+                - 8086:8086
+
+         prom:
+            image: prom/prometheus:latest
+
+         grap:
+            image: grafana/grafana:latest
+            ports:
+                - 3000:3000
